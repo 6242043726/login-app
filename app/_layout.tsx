@@ -3,6 +3,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "@/config/language/i18n";
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -24,6 +25,8 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="DisclaimerPage" options={{ headerShown: false }} />
         <Stack.Screen name="LoginPage" options={{ headerShown: false }} />
+        <Stack.Screen name="OtpRequestPage" options={{ headerShown: false }} />
+        <Stack.Screen name="OtpPage" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </>
