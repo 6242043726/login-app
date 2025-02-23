@@ -1,4 +1,3 @@
-import { COLORS } from "@/constants/Colors";
 import { sharedStyle } from "@/constants/SharedStyle";
 import { View } from "react-native";
 import tw from "twrnc";
