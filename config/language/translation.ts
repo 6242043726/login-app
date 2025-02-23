@@ -37,6 +37,12 @@ export const translation = {
         confirmPinHeader: "Confirm PIN CODE",
         forgotPin: "Forgot PIN ?",
       },
+      touchIdPage: {
+        title: "Touch ID",
+        description: "Set login with fingerprint \nfor quick access",
+        setTouchId: "Set fingerprint",
+        skip: "Skip",
+      },
     },
   },
   th: {
@@ -75,7 +81,13 @@ export const translation = {
         setPinHeader: "ตั้งรหัส PIN CODE",
         confirmPinHeader: "ยืนยันรหัส PIN CODE",
         forgotPin: "ลืมรหัส PIN ?",
-      }
+      },
+      touchIdPage: {
+        title: "Touch ID",
+        description: "ตั้งค่าล็อคอินด้วยลายนิ้วมือ \nเพื่อการเข้าถึงที่รวดเร็วขึ้น",
+        setTouchId: "ตั้งค่าลายนิ้วมือ",
+        skip: "ข้าม",
+      },
     },
   },
 };
