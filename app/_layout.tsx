@@ -27,6 +27,7 @@ export default function RootLayout() {
         <Stack.Screen name="LoginPage" options={{ headerShown: false }} />
         <Stack.Screen name="OtpRequestPage" options={{ headerShown: false }} />
         <Stack.Screen name="OtpPage" options={{ headerShown: false }} />
+        <Stack.Screen name="PinCodePage" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </>

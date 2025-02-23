@@ -31,6 +31,12 @@ export const translation = {
         notReceive: "If you do not receive a code?",
         resend: "Resend code",
       },
+      pinCodePage: {
+        enterPin: "Please enter PIN",
+        setPinHeader: "Set PIN CODE",
+        confirmPinHeader: "Confirm PIN CODE",
+        forgotPin: "Forgot PIN ?",
+      },
     },
   },
   th: {
@@ -64,6 +70,12 @@ export const translation = {
         notReceive: "หากคุณไม่ได้รับรหัส?",
         resend: "ส่งรหัสใหม่",
       },
+      pinCodePage: {
+        enterPin: "กรุณากรอกรหัส PIN",
+        setPinHeader: "ตั้งรหัส PIN CODE",
+        confirmPinHeader: "ยืนยันรหัส PIN CODE",
+        forgotPin: "ลืมรหัส PIN ?",
+      }
     },
   },
 };

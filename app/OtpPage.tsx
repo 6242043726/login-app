@@ -8,7 +8,7 @@ import { COLORS } from "@/constants/Colors";
 import OTPTextInput from "react-native-otp-textinput";
 import { useEffect, useState } from "react";
 import { router } from "expo-router";
-
+import { pinMode } from "@/constants/Enum";
 export default function OtpPage() {
   const { t } = useTranslation("", { keyPrefix: "otpPage" });
   const [timeLeft, setTimeLeft] = useState(60);
@@ -22,7 +22,10 @@ export default function OtpPage() {
 
   useEffect(() => {
     if (otpToken?.length === 6) {
-      router.navigate("./PinCodePage");
+      router.navigate({
+        pathname: "/PinCodePage",
+        params: { type: pinMode.SET_Pin }
+      });
     }
   }, [otpToken]);
 

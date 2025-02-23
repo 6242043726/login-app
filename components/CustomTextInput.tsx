@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Animated,
   Platform,
-  Text,
 } from "react-native";
 import { COLORS } from "@/constants/Colors";
 
