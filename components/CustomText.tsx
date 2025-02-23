@@ -1,4 +1,4 @@
-import { COLORS } from '@/constants/Colors';
+import { Colors } from '@/constants/Colors';
 import React from 'react';
 import { Text as RNText, StyleSheet, TextProps } from 'react-native';
 
@@ -12,7 +12,7 @@ export const Text: React.FC<TextProps> = (props) => {
 
 const styles = StyleSheet.create({
   defaultText: {
-    color: COLORS.black,
+    color: Colors.black,
     fontFamily: 'SukhumvitSet',
   },
 });

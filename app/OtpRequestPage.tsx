@@ -5,7 +5,7 @@ import TopNavBar from "@/components/TopNavBar";
 import tw from "twrnc";
 import OtpIcon from "@/assets/svg/OtpIcon";
 import { Text } from "@/components/CustomText";
-import { COLORS } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
 
@@ -24,14 +24,14 @@ export default function OtpRequestPage() {
 
           <Text
             style={[
-              tw`text-xl text-[${COLORS.black}] mt-16`,
+              tw`text-xl text-[${Colors.black}] mt-16`,
               sharedStyle.fontBold,
             ]}
           >
             {t("title")}
           </Text>
 
-          <Text style={tw`text-xl text-[${COLORS.green}] mt-4`}>
+          <Text style={tw`text-xl text-[${Colors.green}] mt-4`}>
             082-XXX-8998
           </Text>
 
@@ -44,7 +44,7 @@ export default function OtpRequestPage() {
             />
           </View>
 
-          <Text style={tw`text-xs text-[${COLORS.gray}] mt-8`}>
+          <Text style={tw`text-xs text-[${Colors.gray}] mt-8`}>
             {t("remark")}
           </Text>
         </View>

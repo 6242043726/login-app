@@ -2,7 +2,7 @@ import React, { forwardRef, useImperativeHandle, useState } from "react";
 import {
   View,
 } from "react-native";
-import { COLORS } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import tw from "twrnc";
 
 interface PincodeComponentProps {
@@ -33,7 +33,7 @@ const PincodeComponent = forwardRef<any, PincodeComponentProps>(
                 key={index}
                 style={[
                   tw`w-[14px] h-[14px] rounded-full border`,
-                  { backgroundColor: pin[index] ? COLORS.green : "transparent", borderColor: pin[index] ? COLORS.green : COLORS.gray },
+                  { backgroundColor: pin[index] ? Colors.green : "transparent", borderColor: pin[index] ? Colors.green : Colors.gray },
                 ]}
               />
             ))}

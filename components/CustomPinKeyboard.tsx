@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
 import FingerPrintIcon from '@/assets/svg/FingerPrintIcon';
-import { COLORS } from '@/constants/Colors';
+import { Colors } from '@/constants/Colors';
 import DeleteIcon from '@/assets/svg/DeleteIcon';
 
 interface CustomPinKeyboardProps {
@@ -99,19 +99,19 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 0.5,
     borderRadius: 90,
-    borderColor: COLORS.gray,
+    borderColor: Colors.gray,
     backgroundColor: 'transparent',
   },
   keyPressed: {
-    backgroundColor: COLORS.green,
+    backgroundColor: Colors.green,
   },
   keyText: {
     fontSize: 30,
-    color: COLORS.black,
+    color: Colors.black,
     fontFamily: "SukhumvitSet",
   },
   keyTextPressed: {
-    color: COLORS.white,
+    color: Colors.white,
   },
 });
 

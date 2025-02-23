@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Animated,
 } from "react-native";
-import { COLORS } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 
 interface CustomTextInputProps extends TextInputProps {
   type?: string;
@@ -45,7 +45,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
     }),
     color: animatedLabelPosition.interpolate({
       inputRange: [0, 1],
-      outputRange: [COLORS.darkGray, COLORS.darkGray],
+      outputRange: [Colors.darkGray, Colors.darkGray],
     }),
   };
 
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    borderBottomColor: COLORS.lightGray,
+    borderBottomColor: Colors.lightGray,
     borderBottomWidth: 1,
     height: 52,
     backgroundColor: "transparent",
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "SukhumvitSet",
     marginTop: 8,
-    color: COLORS.darkGray,
+    color: Colors.darkGray,
     paddingBottom: 0
   },
 });

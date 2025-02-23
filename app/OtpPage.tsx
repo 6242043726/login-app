@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import TopNavBar from "@/components/TopNavBar";
 import tw from "twrnc";
 import { Text } from "@/components/CustomText";
-import { COLORS } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import OTPTextInput from "react-native-otp-textinput";
 import { useEffect, useState } from "react";
 import { router } from "expo-router";
@@ -62,23 +62,23 @@ export default function OtpPage() {
               inputCount={6}
               containerStyle={tw`w-full`}
               textInputStyle={tw`border-b-2 text-center text-2xl`}
-              tintColor={COLORS.green}
+              tintColor={Colors.green}
               handleTextChange={(text) => setOtpToken(text)}
               autoFocus
             />
 
-            <Text style={tw`text-[${COLORS.gray}] mt-32`}>
+            <Text style={tw`text-[${Colors.gray}] mt-32`}>
               {t("notReceive")}
             </Text>
             {timeUp ? (
               <View style={tw`flex-row justify-center items-center gap-1`}>
-                <Text style={tw`text-[${COLORS.green}]`}>{t("resend")}</Text>
-                <Text style={tw`text-[${COLORS.green}]`}>({timeLeft})</Text>
+                <Text style={tw`text-[${Colors.green}]`}>{t("resend")}</Text>
+                <Text style={tw`text-[${Colors.green}]`}>({timeLeft})</Text>
               </View>
             ) : (
               <View style={tw`flex-row justify-center items-center`}>
                 <TouchableOpacity onPress={resend} disabled={timeUp}>
-                  <Text style={tw`text-[${COLORS.green}]`}>{t("resend")}</Text>
+                  <Text style={tw`text-[${Colors.green}]`}>{t("resend")}</Text>
                 </TouchableOpacity>
               </View>
             )}

@@ -1,4 +1,4 @@
-import { COLORS } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import { sharedStyle } from "@/constants/SharedStyle";
 import React from "react";
 import { TouchableOpacity, GestureResponderEvent } from "react-native";
@@ -22,13 +22,13 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   const buttonStyles =
     buttonType === "first"
-      ? tw`h-12 bg-[${COLORS.green}] justify-center items-center rounded-md`
-      : tw`h-12 bg-transparent border border-[${COLORS.green}] justify-center items-center rounded-md`;
+      ? tw`h-12 bg-[${Colors.green}] justify-center items-center rounded-md`
+      : tw`h-12 bg-transparent border border-[${Colors.green}] justify-center items-center rounded-md`;
 
   const textStyles =
     buttonType === "first"
       ? tw`text-base text-white`
-      : tw`text-base text-[${COLORS.green}]`;
+      : tw`text-base text-[${Colors.green}]`;
 
   return (
     <TouchableOpacity style={buttonStyles} onPress={onPress}>

@@ -1,4 +1,4 @@
-import { COLORS } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import { TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -54,7 +54,7 @@ export default function LoginPage() {
               style={tw`m-2 w-4 h-4`}
               value={isRememberMe}
               onValueChange={setIsRememberMe}
-              color={isRememberMe ? COLORS.green : undefined}
+              color={isRememberMe ? Colors.green : undefined}
             />
             <Text>{t("rememberMe")}</Text>
           </View>
@@ -73,11 +73,11 @@ export default function LoginPage() {
         </View>
 
         <View style={tw`flex-row items-center my-8`}>
-          <View style={tw`flex-1 h-0.25 bg-[${COLORS.gray}]`} />
-          <Text style={tw`text-base text-[${COLORS.gray}] mx-2`}>
+          <View style={tw`flex-1 h-0.25 bg-[${Colors.gray}]`} />
+          <Text style={tw`text-base text-[${Colors.gray}] mx-2`}>
             {t("noAccount")}
           </Text>
-          <View style={tw`flex-1 h-0.25 bg-[${COLORS.gray}]`} />
+          <View style={tw`flex-1 h-0.25 bg-[${Colors.gray}]`} />
         </View>
 
         <CustomButton
