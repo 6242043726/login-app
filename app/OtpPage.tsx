@@ -9,7 +9,6 @@ import OTPTextInput from "react-native-otp-textinput";
 import { useEffect, useState } from "react";
 import { router } from "expo-router";
 import { pinMode } from "@/constants/Enum";
-import DismissKeyboardWrapper from "@/components/DismissKeyboardWrapper";
 export default function OtpPage() {
   const { t } = useTranslation("", { keyPrefix: "otpPage" });
   const [timeLeft, setTimeLeft] = useState(60);
@@ -52,7 +51,6 @@ export default function OtpPage() {
   };
 
   return (
-    <DismissKeyboardWrapper>
       <View style={sharedStyle.container}>
         <View style={sharedStyle.topSection}>
           <TopNavBar
@@ -87,6 +85,5 @@ export default function OtpPage() {
           </View>
         </View>
       </View>
-    </DismissKeyboardWrapper>
   );
 }

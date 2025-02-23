@@ -9,7 +9,6 @@ import CustomTextInput from "@/components/CustomTextInput";
 import React, { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { Text } from "@/components/CustomText";
-import DismissKeyboardWrapper from "@/components/DismissKeyboardWrapper";
 
 export default function LoginPage() {
   const { t } = useTranslation("", { keyPrefix: "loginPage" });
@@ -91,7 +90,6 @@ export default function LoginPage() {
   };
 
   return (
-    <DismissKeyboardWrapper>
       <SafeAreaView style={tw`flex-1 px-6 items-center justify-center`}>
         <View style={tw`flex-0.25`} />
         <View style={tw`w-full`}>
@@ -99,6 +97,5 @@ export default function LoginPage() {
           {renderButtonGroup()}
         </View>
       </SafeAreaView>
-    </DismissKeyboardWrapper>
   );
 }

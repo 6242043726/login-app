@@ -3,6 +3,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "@/config/language/i18n";
+import DismissKeyboardWrapper from "@/components/DismissKeyboardWrapper";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -10,6 +11,7 @@ export default function RootLayout() {
     SukhumvitSet: require("../assets/fonts/SukhumvitSet-Text.ttf"),
     SukhumvitSetBold: require("../assets/fonts/SukhumvitSet-Bold.ttf"),
   });
+  
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -20,7 +22,7 @@ export default function RootLayout() {
     return null;
   }
   return (
-    <>
+    <DismissKeyboardWrapper>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen
@@ -36,6 +38,6 @@ export default function RootLayout() {
         <Stack.Screen name="HomePage" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
-    </>
+    </DismissKeyboardWrapper>
   );
 }
