@@ -2,16 +2,14 @@ import { TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
-import {
-  router,
-  useLocalSearchParams,
-} from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import CustomPinKeyboard from "@/components/CustomPinKeyboard";
 import CustomPinCode from "@/components/CustomPinCode";
 import { useEffect, useRef, useState } from "react";
 import { Text } from "@/components/CustomText";
 import * as LocalAuthentication from "expo-local-authentication";
 import { pinMode } from "@/constants/Enum";
+import * as SecureStore from "expo-secure-store";
 
 export default function PinCodePage() {
   const { t } = useTranslation("", { keyPrefix: "pinCodePage" });
@@ -24,13 +22,26 @@ export default function PinCodePage() {
 
   const [hasBiometric, setHasBiometric] = useState(false);
   const [biometricType, setBiometricType] = useState("");
-
-  const validPin = "555555";
+  const [validPin, setValidPin] = useState("pin");
 
   useEffect(() => {
     if (type === pinMode.SET_Pin) {
       setSetPinMode(true);
     }
+
+    const fetchPin = async () => {
+      try {
+        const value = await SecureStore.getItemAsync("pinValue");
+        if (value) {
+          setValidPin(value);
+        }
+      } catch (error) {
+        console.error("Error fetching validPin", error);
+      }
+    };
+
+    fetchPin();
+
     const checkForBiometric = async () => {
       const compatible = await LocalAuthentication.hasHardwareAsync();
       setHasBiometric(compatible);
@@ -61,12 +72,11 @@ export default function PinCodePage() {
     try {
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: "Touch ID for “CGS Application”",
-
         fallbackLabel: "Use PinCode",
       });
 
       if (result.success) {
-        router.navigate("./HomePage");
+        nextHome();
       } else {
         console.log("authentication failed");
       }
@@ -93,6 +103,7 @@ export default function PinCodePage() {
               setTimeout(() => {
                 setIsConfirmPin(false);
                 console.log("pin is matched");
+                SecureStore.setItemAsync("pinValue", newValue);
                 router.navigate("./TouchIdPage");
               }, 0);
               return "";
@@ -109,7 +120,7 @@ export default function PinCodePage() {
         } else {
           if (newValue.length === 6 && newValue === validPin) {
             setTimeout(() => {
-              router.navigate("./HomePage");
+              nextHome();
             }, 0);
           } else if (newValue.length < 6) {
             return newValue;
@@ -137,6 +148,10 @@ export default function PinCodePage() {
   if (setPinMode) {
     pinText = isConfirmPin ? "confirmPinHeader" : "setPinHeader";
   }
+
+  const nextHome = () => {
+    router.navigate("./HomePage");
+  };
 
   return (
     <SafeAreaView style={tw`flex-1 items-center justify-center px-6 pb-24`}>
