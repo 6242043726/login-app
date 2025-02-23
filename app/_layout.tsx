@@ -23,7 +23,10 @@ export default function RootLayout() {
     <>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="SelectLanguagePage" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="SelectLanguagePage"
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="DisclaimerPage" options={{ headerShown: false }} />
         <Stack.Screen name="LoginPage" options={{ headerShown: false }} />
         <Stack.Screen name="OtpRequestPage" options={{ headerShown: false }} />

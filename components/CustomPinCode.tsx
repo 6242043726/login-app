@@ -1,9 +1,9 @@
 import React, { forwardRef, useImperativeHandle, useState } from "react";
 import {
   View,
-  StyleSheet,
 } from "react-native";
 import { COLORS } from "@/constants/Colors";
+import tw from "twrnc";
 
 interface PincodeComponentProps {
   onKeyPress: (value: string) => void;
@@ -25,14 +25,14 @@ const PincodeComponent = forwardRef<any, PincodeComponentProps>(
     }));
 
     return (
-      <View style={styles.container}>
-        <View style={{ flex: 1, alignItems: "center" }}>
-          <View style={styles.pinDotsContainer}>
+      <View style={tw`flex-1 items-center justify-center`}>
+        <View style={tw`flex-1 items-center`}>
+          <View style={tw`flex-row justify-between w-[40%]`}>
             {Array.from({ length: maxPinLength }, (_, index) => (
               <View
                 key={index}
                 style={[
-                  styles.pinDot,
+                  tw`w-[14px] h-[14px] rounded-full border`,
                   { backgroundColor: pin[index] ? COLORS.green : "transparent", borderColor: pin[index] ? COLORS.green : COLORS.gray },
                 ]}
               />
@@ -43,24 +43,5 @@ const PincodeComponent = forwardRef<any, PincodeComponentProps>(
     );
   }
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  pinDotsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "40%",
-  },
-  pinDot: {
-    width: 14,
-    height: 14,
-    borderRadius: 10,
-    borderWidth: 2,
-  }
-});
 
 export default PincodeComponent;

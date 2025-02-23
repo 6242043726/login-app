@@ -17,11 +17,11 @@ export default function OtpRequestPage() {
       <View style={sharedStyle.topSection}>
         <TopNavBar />
         <View style={tw`flex-0.25`} />
-
         <View style={tw`items-center`}>
           <View style={tw`border border-dashed w-[82px] h-[82px] mt-16`}>
             <OtpIcon />
           </View>
+
           <Text
             style={[
               tw`text-xl text-[${COLORS.black}] mt-16`,
@@ -30,9 +30,11 @@ export default function OtpRequestPage() {
           >
             {t("title")}
           </Text>
+
           <Text style={tw`text-xl text-[${COLORS.green}] mt-4`}>
             082-XXX-8998
           </Text>
+
           <View style={tw`w-full mt-16`}>
             <CustomButton
               onPress={() => {

@@ -24,7 +24,7 @@ export default function LoginPage() {
   const updateFormState = (field: string, value: any) =>
     setFormState((prev) => ({ ...prev, [field]: value }));
 
-  const renderTextInput = () => {
+  const renderTextInputs = () => {
     return (
       <View style={tw`gap-8`}>
         <CustomTextInput
@@ -46,7 +46,7 @@ export default function LoginPage() {
     );
   };
 
-  const renderButton = () => {
+  const renderButtonGroup = () => {
     return (
       <>
         <View style={tw`flex-row items-center justify-between mt-4`}>
@@ -95,8 +95,8 @@ export default function LoginPage() {
       <SafeAreaView style={tw`flex-1 px-6 items-center justify-center`}>
         <View style={tw`flex-0.25`} />
         <View style={tw`w-full`}>
-          {renderTextInput()}
-          {renderButton()}
+          {renderTextInputs()}
+          {renderButtonGroup()}
         </View>
       </SafeAreaView>
     </DismissKeyboardWrapper>

@@ -1,11 +1,8 @@
 import { COLORS } from "@/constants/Colors";
 import { sharedStyle } from "@/constants/SharedStyle";
 import React from "react";
-import {
-  TouchableOpacity,
-  GestureResponderEvent,
-} from "react-native";
-import { Text } from "./CustomText"
+import { TouchableOpacity, GestureResponderEvent } from "react-native";
+import { Text } from "./CustomText";
 import tw from "twrnc";
 
 type ButtonType = "first" | "second";
@@ -35,7 +32,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   return (
     <TouchableOpacity style={buttonStyles} onPress={onPress}>
-      <Text style={[textStyles,sharedStyle.fontBold]}>{title}</Text>
+      <Text style={[textStyles, sharedStyle.fontBold]}>{title}</Text>
     </TouchableOpacity>
   );
 };

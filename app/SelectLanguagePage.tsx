@@ -15,6 +15,7 @@ export default function SelectLanguagePage() {
       router.navigate("./DisclaimerPage");
     };
   };
+  
   return (
     <SafeAreaView
       style={tw`flex-1 items-center justify-center px-6 gap-24 pb-16`}

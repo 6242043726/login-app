@@ -23,7 +23,7 @@ export default class LanguageDetector implements LanguageDetectorAsyncModule {
       }
 
       const locales = Localization.getLocales();
-      const systemLanguage = locales[0].languageCode || defaultLang; 
+      const systemLanguage = locales[0].languageCode ?? defaultLang; 
       const validLanguages = ["en", "th"];  
 
       if (validLanguages.includes(systemLanguage)) {

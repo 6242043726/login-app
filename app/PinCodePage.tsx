@@ -12,10 +12,7 @@ import { pinMode } from "@/constants/Enum";
 import * as SecureStore from "expo-secure-store";
 
 export default function PinCodePage() {
-  const { t } = useTranslation("", { keyPrefix: "pinCodePage" });
-  const { type } = useLocalSearchParams();
-
-  const pinRef = useRef<any>(null);
+  //*states
   const [pin, setPin] = useState("");
   const [isConfirmPin, setIsConfirmPin] = useState<boolean>(false);
   const [setPinMode, setSetPinMode] = useState<boolean>(false);
@@ -24,6 +21,22 @@ export default function PinCodePage() {
   const [biometricType, setBiometricType] = useState("");
   const [validPin, setValidPin] = useState("pin");
 
+  //*utils
+  const { t } = useTranslation("", { keyPrefix: "pinCodePage" });
+  const { type } = useLocalSearchParams();
+  const pinRef = useRef<any>(null);
+
+  let pinText = "enterPin";
+
+  if (setPinMode) {
+    pinText = isConfirmPin ? "confirmPinHeader" : "setPinHeader";
+  }
+
+  const nextHome = () => {
+    router.navigate("./HomePage");
+  };
+
+  //*effects
   useEffect(() => {
     if (type === pinMode.SET_Pin) {
       setSetPinMode(true);
@@ -68,6 +81,7 @@ export default function PinCodePage() {
     checkForBiometric();
   }, []);
 
+  //*handlers
   const handleAuthentication = async () => {
     try {
       const result = await LocalAuthentication.authenticateAsync({
@@ -98,38 +112,34 @@ export default function PinCodePage() {
               }, 0);
               return "";
             }
-          } else {
-            if (newValue === pin) {
-              setTimeout(() => {
-                setIsConfirmPin(false);
-                console.log("pin is matched");
-                SecureStore.setItemAsync("pinValue", newValue);
-                router.navigate("./TouchIdPage");
-              }, 0);
-              return "";
-            } else if (newValue.length < 6) {
-              return newValue;
-            } else {
-              setTimeout(() => {
-                console.log("error pin not match");
-                setIsConfirmPin(false);
-              }, 0);
-              return "";
-            }
-          }
-        } else {
-          if (newValue.length === 6 && newValue === validPin) {
+          } else if (newValue === pin) {
             setTimeout(() => {
-              nextHome();
+              setIsConfirmPin(false);
+              console.log("pin is matched");
+              SecureStore.setItemAsync("pinValue", newValue);
+              router.navigate("./TouchIdPage");
             }, 0);
+            return "";
           } else if (newValue.length < 6) {
             return newValue;
           } else {
             setTimeout(() => {
-              console.log("error pin is wrong");
+              console.log("error pin not match");
+              setIsConfirmPin(false);
             }, 0);
             return "";
           }
+        } else if (newValue.length === 6 && newValue === validPin) {
+          setTimeout(() => {
+            nextHome();
+          }, 0);
+        } else if (newValue.length < 6) {
+          return newValue;
+        } else {
+          setTimeout(() => {
+            console.log("error pin is wrong");
+          }, 0);
+          return "";
         }
 
         return newValue;
@@ -141,16 +151,6 @@ export default function PinCodePage() {
     if (pinRef.current) {
       pinRef.current.setValue((prevValue: string) => prevValue.slice(0, -1));
     }
-  };
-
-  let pinText = "enterPin";
-
-  if (setPinMode) {
-    pinText = isConfirmPin ? "confirmPinHeader" : "setPinHeader";
-  }
-
-  const nextHome = () => {
-    router.navigate("./HomePage");
   };
 
   return (

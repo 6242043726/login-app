@@ -16,11 +16,8 @@ const Line = () => {
 export default function DisclaimerPage() {
   const { t } = useTranslation("", { keyPrefix: "disclaimerPage" });
 
-  return (
-    <View style={sharedStyle.container}>
-      <View style={sharedStyle.topSection}>
-        <TopNavBar />
-      </View>
+  const renderDisclaimer = () => {
+    return (
       <View style={tw`bg-white rounded-t-2xl h-[70%] shadow-2xl p-6`}>
         <View style={tw`flex-row gap-4`}>
           <View style={tw`border border-dashed w-[26px] h-[26px]`}>
@@ -36,13 +33,33 @@ export default function DisclaimerPage() {
         <View style={tw`flex-grow`} />
         <View style={tw`justify-end flex-row gap-4`}>
           <View style={tw`flex-1`}>
-            <CustomButton onPress={() => {router.back()}} title={t("reject")} type={"second"} />
+            <CustomButton
+              onPress={() => {
+                router.back();
+              }}
+              title={t("reject")}
+              type={"second"}
+            />
           </View>
           <View style={tw`flex-1`}>
-            <CustomButton onPress={() => {router.navigate("./LoginPage")}} title={t("accept")} />
+            <CustomButton
+              onPress={() => {
+                router.navigate("./LoginPage");
+              }}
+              title={t("accept")}
+            />
           </View>
         </View>
       </View>
+    );
+  };
+
+  return (
+    <View style={sharedStyle.container}>
+      <View style={sharedStyle.topSection}>
+        <TopNavBar />
+      </View>
+      {renderDisclaimer()}
     </View>
   );
 }

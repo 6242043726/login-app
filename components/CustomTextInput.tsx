@@ -5,7 +5,6 @@ import {
   TextInputProps,
   StyleSheet,
   Animated,
-  Platform,
 } from "react-native";
 import { COLORS } from "@/constants/Colors";
 
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
   },
   label: {
     position: "absolute",
-    left: Platform.OS === "ios" ? 0 : 4,
+    left: 0,
     fontFamily: "SukhumvitSet",
   },
   input: {

@@ -9,6 +9,7 @@ import OTPTextInput from "react-native-otp-textinput";
 import { useEffect, useState } from "react";
 import { router } from "expo-router";
 import { pinMode } from "@/constants/Enum";
+import DismissKeyboardWrapper from "@/components/DismissKeyboardWrapper";
 export default function OtpPage() {
   const { t } = useTranslation("", { keyPrefix: "otpPage" });
   const [timeLeft, setTimeLeft] = useState(60);
@@ -24,7 +25,7 @@ export default function OtpPage() {
     if (otpToken?.length === 6) {
       router.navigate({
         pathname: "/PinCodePage",
-        params: { type: pinMode.SET_Pin }
+        params: { type: pinMode.SET_Pin },
       });
     }
   }, [otpToken]);
@@ -51,37 +52,41 @@ export default function OtpPage() {
   };
 
   return (
-    <View style={sharedStyle.container}>
-      <View style={sharedStyle.topSection}>
-        <TopNavBar
-          title={t("title")}
-          description={t("description") + "\n082-XXX-8998"}
-        />
-        <View style={tw`mt-16 items-center`}>
-          <OTPTextInput
-            inputCount={6}
-            containerStyle={tw`w-full`}
-            textInputStyle={tw`border-b-2 text-center text-2xl`}
-            tintColor={COLORS.green}
-            handleTextChange={(text) => setOtpToken(text)}
-            autoFocus
+    <DismissKeyboardWrapper>
+      <View style={sharedStyle.container}>
+        <View style={sharedStyle.topSection}>
+          <TopNavBar
+            title={t("title")}
+            description={t("description") + "\n082-XXX-8998"}
           />
+          <View style={tw`mt-16 items-center`}>
+            <OTPTextInput
+              inputCount={6}
+              containerStyle={tw`w-full`}
+              textInputStyle={tw`border-b-2 text-center text-2xl`}
+              tintColor={COLORS.green}
+              handleTextChange={(text) => setOtpToken(text)}
+              autoFocus
+            />
 
-          <Text style={tw`text-[${COLORS.gray}] mt-32`}>{t("notReceive")}</Text>
-          {timeUp ? (
-            <View style={tw`flex-row justify-center items-center gap-1`}>
-              <Text style={tw`text-[${COLORS.green}]`}>{t("resend")}</Text>
-              <Text style={tw`text-[${COLORS.green}]`}>({timeLeft})</Text>
-            </View>
-          ) : (
-            <View style={tw`flex-row justify-center items-center`}>
-              <TouchableOpacity onPress={resend} disabled={timeUp}>
+            <Text style={tw`text-[${COLORS.gray}] mt-32`}>
+              {t("notReceive")}
+            </Text>
+            {timeUp ? (
+              <View style={tw`flex-row justify-center items-center gap-1`}>
                 <Text style={tw`text-[${COLORS.green}]`}>{t("resend")}</Text>
-              </TouchableOpacity>
-            </View>
-          )}
+                <Text style={tw`text-[${COLORS.green}]`}>({timeLeft})</Text>
+              </View>
+            ) : (
+              <View style={tw`flex-row justify-center items-center`}>
+                <TouchableOpacity onPress={resend} disabled={timeUp}>
+                  <Text style={tw`text-[${COLORS.green}]`}>{t("resend")}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          </View>
         </View>
       </View>
-    </View>
+    </DismissKeyboardWrapper>
   );
 }
