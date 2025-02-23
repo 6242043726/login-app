@@ -22,8 +22,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   const buttonStyles =
     buttonType === "first"
-      ? tw`h-14 bg-[${COLORS.green}] justify-center items-center rounded-md`
-      : tw`h-14 bg-transparent border border-[${COLORS.green}] justify-center items-center py-4 rounded-md`;
+      ? tw`h-12 bg-[${COLORS.green}] justify-center items-center rounded-md`
+      : tw`h-12 bg-transparent border border-[${COLORS.green}] justify-center items-center rounded-md`;
 
   const textStyles =
     buttonType === "first"
