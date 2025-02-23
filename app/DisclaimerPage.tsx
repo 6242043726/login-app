@@ -19,13 +19,11 @@ export default function DisclaimerPage() {
   const renderDisclaimer = () => {
     return (
       <View style={tw`bg-white rounded-t-2xl h-[70%] shadow-2xl p-6`}>
-        <View style={tw`flex-row gap-4`}>
+        <View style={tw`flex-row gap-4 items-center`}>
           <View style={tw`border border-dashed w-[26px] h-[26px]`}>
             <DisclaimerIcon />
           </View>
-          <Text
-            style={[tw`text-2xl text-[${COLORS.black}]`, sharedStyle.fontBold]}
-          >
+          <Text style={[{fontSize: 24}, sharedStyle.fontBold]}>
             {t("title")}
           </Text>
         </View>
